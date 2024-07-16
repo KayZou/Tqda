@@ -20,4 +20,13 @@ export class UsersService {
       throw error;
     }
   }
+
+  async getAllUsers() {
+    try {
+      return await this.prismaService.user.findMany();
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }

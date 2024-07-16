@@ -1,0 +1,1 @@
+export const API_URl=process.env.API_URL
