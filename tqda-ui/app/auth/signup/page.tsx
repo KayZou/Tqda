@@ -9,13 +9,22 @@ export default function SignupPage() {
   const [state, formAction] = useFormState(CreateUser, { error: "" });
   return (
     <form action={formAction} className="w-full max-w-xs">
-      <Stack spacing={2} >
-        <TextField label="Email" name="email" variant="outlined" type="email" />
+      <Stack spacing={2}>
+        <TextField
+          label="Email"
+          name="email"
+          variant="outlined"
+          type="email"
+          helperText={state.error}
+          error={!!state.error}
+        />
         <TextField
           label="Password"
           name="password"
           variant="outlined"
           type="password"
+          helperText={state.error}
+          error={!!state.error}
         />
         <Button variant="contained" type="submit">
           Signup
