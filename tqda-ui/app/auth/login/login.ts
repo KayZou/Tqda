@@ -5,6 +5,7 @@ import { FormError } from "../common/form-error.interface";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
+import { AUTHENTICATION } from "@/app/constants/names";
 
 interface ErrorResponse {
   message: string | string[];
@@ -33,7 +34,7 @@ const setAuthCookie = (response: Response) => {
   if (setCookieHeader) {
     const token = setCookieHeader.split(";")[0].split("=")[1];
     cookies().set({
-      name: "Authentication",
+      name: AUTHENTICATION,
       value: token,
       secure: true,
       httpOnly: true,
