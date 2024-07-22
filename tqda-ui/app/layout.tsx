@@ -6,6 +6,7 @@ import Header from "./header/Header";
 import Providers from "./Providers";
 import authenticated from "./auth/authenticated";
 import logout from "./auth/logout";
+import getMe from "./get-me";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +21,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const isAuthenticated = await authenticated();
+  const user = await getMe();
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers authenticated={isAuthenticated}>
           <CssBaseline />
-          <Header logout={logout} />
+          <Header logout={logout}  />
           <Container>{children}</Container>
         </Providers>
       </body>

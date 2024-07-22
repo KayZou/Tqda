@@ -4,7 +4,7 @@ import { unauthenticatedRoutes } from "./app/constants/routes";
 
 export function middleware(request: NextRequest) {
   if (
-    !authenticated() ||
+    !authenticated() &&
     !unauthenticatedRoutes.some((route) =>
       request.nextUrl.pathname.startsWith(route.path)
     )

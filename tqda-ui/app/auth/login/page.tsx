@@ -16,16 +16,16 @@ export default function LoginPage() {
           label="Email"
           variant="outlined"
           type="email"
-          error={!!state.error}
-          helperText={state.error}
+          error={state && !!state.error}
+          helperText={state && state.error}
         />
         <TextField
           name="password"
           label="Password"
           variant="outlined"
           type="password"
-          error={!!state.error}
-          helperText={state.error}
+          error={state && !!state.error}
+          helperText={state && state.error}
         />
         <Button type="submit" variant="contained">
           Login
