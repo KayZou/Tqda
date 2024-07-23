@@ -10,8 +10,8 @@ function isErrorResponse(res: any): res is ErrorResponse {
 }
 
 const getHeaders = () => ({
-    Cookie: cookies().toString()
-})
+  Cookie: cookies().toString(),
+});
 
 export const post = async (path: string, formData: FormData) => {
   const res = await fetch(`${API_URl}/${path}`, {
@@ -26,9 +26,9 @@ export const post = async (path: string, formData: FormData) => {
   return { error: "" };
 };
 
-export const get = async (path: string ) => {
-    const res = await fetch(`${API_URl}/${path}`, {
-        headers: {...getHeaders()}
-    })
-    return res.json()
-}
+export const get = async <T>(path: string) => {
+  const res = await fetch(`${API_URl}/${path}`, {
+    headers: { ...getHeaders() },
+  });
+  return res.json() as T;
+};

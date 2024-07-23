@@ -1,9 +1,9 @@
 "use client";
 
 import { Box, Button, Modal, Stack, TextField } from "@mui/material";
-import { FormError } from "../auth/common/form-error.interface";
+import { FormError } from "../../auth/common/form-error.interface";
 import { useState } from "react";
-import CreateProduct from "./create-product";
+import CreateProduct from "../actions/create-product";
 
 const styles = {
   position: "absolute",
