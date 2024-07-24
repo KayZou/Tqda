@@ -1,9 +1,17 @@
 "use client";
 
-import { Box, Button, Modal, Stack, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { FormError } from "../../auth/common/form-error.interface";
 import { useState } from "react";
 import CreateProduct from "../actions/create-product";
+import { CloudUploadSharp } from "@mui/icons-material";
 
 const styles = {
   position: "absolute",
@@ -17,6 +25,18 @@ const styles = {
   p: 4,
 };
 
+const fileInputStyles = {
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+};
+
 interface Props {
   open: boolean;
   handleClose: () => void;
@@ -24,10 +44,12 @@ interface Props {
 
 export default function CreateProductModal({ open, handleClose }: Props) {
   const [res, setRes] = useState<FormError>();
+  const [fileName, setFileName] = useState("");
 
   const onClose = () => {
     setRes(undefined);
     handleClose();
+    setFileName("");
   };
 
   return (
@@ -71,6 +93,22 @@ export default function CreateProductModal({ open, handleClose }: Props) {
               error={res && !!res.error}
               required
             />
+            <Button
+              component="label"
+              variant="outline"
+              startIcon={<CloudUploadSharp />}
+            >
+              Upload File
+              <input
+                type="file"
+                name="image"
+                style={fileInputStyles}
+                onChange={(e) =>
+                  e.target.files && setFileName(e.target.files[0].name)
+                }
+              />
+            </Button>
+            <Typography> {fileName} </Typography>
             <Button type="submit" variant="contained">
               Add Product
             </Button>

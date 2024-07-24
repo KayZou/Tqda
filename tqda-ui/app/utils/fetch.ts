@@ -9,7 +9,7 @@ function isErrorResponse(res: any): res is ErrorResponse {
   return typeof res.message === "string" || Array.isArray(res.message);
 }
 
-const getHeaders = () => ({
+export const getHeaders = () => ({
   Cookie: cookies().toString(),
 });
 
@@ -23,7 +23,7 @@ export const post = async (path: string, formData: FormData) => {
   if (!res.ok || isErrorResponse(parsedRes)) {
     return { error: parsedRes.message };
   }
-  return { error: "" };
+  return { error: "", data: parsedRes };
 };
 
 export const get = async <T>(path: string, tags?: string[]) => {
