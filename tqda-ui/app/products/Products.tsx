@@ -6,7 +6,7 @@ import Product from "./Product";
 export default async function Products() {
   const products = await GetProducts();
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} sx={{ height: "79vh", overflow: "scroll" }}>
       {products &&
         products.map((product) => (
           <Grid key={product.id} sm={6} lg={4} xs={12}>
