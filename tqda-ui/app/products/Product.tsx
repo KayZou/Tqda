@@ -15,7 +15,7 @@ export default function Product({ product }: Props) {
         <Typography variant={"h4"}>{product.name}</Typography>
         {product.imageExist && (
           <Image
-            src={`${API_URl}/products/${product.id}.avif`}
+            src={`${API_URl}/images/products/${product.id}.avif`}
             width={"0"}
             height={"0"}
             className="w-full h-auto"
